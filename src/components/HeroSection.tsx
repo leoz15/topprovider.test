@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 
+const HERO_IMAGE_URL = 'https://lh3.googleusercontent.com/gps-cs-s/ANWiy9TERVKbeU15z0voZzqxPgW5H8inBX2fjQUbjlkcfnizi4zjlkRuclWPgGeTQbi8_7U-1nym5Lrz86NSgWMrt5UXYvR7-SEHEwHA2McIMP_Of3_DPS9lFuCaS2rBh8A4659KZA1p=s1360-w1360-h1020-rw';
+const LOCAL_FALLBACK = `${import.meta.env.BASE_URL}assets/hero-banner.jpg`;
+
 export const HeroSection: React.FC = () => {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
@@ -27,7 +30,11 @@ export const HeroSection: React.FC = () => {
         {/* Background Architectural Motion Image */}
         <div className="absolute inset-0 overflow-hidden">
           <img
-            src="/assets/hero-architecture.jpg"
+            src={HERO_IMAGE_URL}
+            onError={(e) => {
+              (e.currentTarget as HTMLImageElement).src = LOCAL_FALLBACK;
+            }}
+            referrerPolicy="no-referrer"
             alt="TOP Provider System Group Studio"
             className="w-full h-full object-cover transition-transform duration-700 ease-out will-change-transform group-hover:scale-[1.04]"
             style={{
