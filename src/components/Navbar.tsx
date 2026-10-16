@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Menu, X, ArrowUpRight, Phone, Calendar } from 'lucide-react';
 
+const LOGO_SRC = `${import.meta.env.BASE_URL}assets/top-logo.png`;
+
 interface NavbarProps {
   onOpenContactModal?: () => void;
 }
@@ -49,13 +51,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContactModal }) => {
           {/* Official Company Logo */}
           <a
             href="#"
-            className="flex items-center gap-3 no-underline focus:outline-none group py-1"
+            className="flex items-center gap-3 no-underline focus:outline-none group py-0.5"
             aria-label="TOP Provider Home"
           >
             <img
-              src="/assets/top-logo.png"
+              src={LOGO_SRC}
               alt="TOP PROVIDER SYSTEM GROUP CO., LTD."
-              className="h-8 sm:h-9 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+              className="h-9 sm:h-11 w-auto max-w-[220px] sm:max-w-[260px] object-contain transition-transform duration-300 group-hover:scale-105"
             />
           </a>
 
@@ -101,9 +103,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContactModal }) => {
           <div className="flex flex-col gap-6">
             <div className="flex items-center justify-between pb-4 border-b border-slate-200">
               <img
-                src="/assets/top-logo.png"
+                src={LOGO_SRC}
                 alt="TOP PROVIDER SYSTEM GROUP"
-                className="h-8 w-auto object-contain"
+                className="h-9 sm:h-10 w-auto max-w-[200px] object-contain"
               />
               <span className="text-xs font-medium text-[#0066FF] bg-blue-50 px-2.5 py-1 rounded-full border border-blue-100">
                 System Group

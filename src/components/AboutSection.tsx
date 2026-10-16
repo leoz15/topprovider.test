@@ -36,7 +36,7 @@ export const AboutSection: React.FC = () => {
           <div className="lg:col-span-8 rounded-[28px] sm:rounded-[36px] overflow-hidden border border-slate-200/80 bg-slate-50 shadow-sm relative group">
             <div className="relative aspect-[16/10] overflow-hidden">
               <img
-                src="/assets/office-editorial.jpg"
+                src={`${import.meta.env.BASE_URL}assets/office-editorial.jpg`}
                 onError={(e) => {
                   (e.target as HTMLImageElement).src = 'https://lh3.googleusercontent.com/gps-cs-s/ANWiy9TERVKbeU15z0voZzqxPgW5H8inBX2fjQUbjlkcfnizi4zjlkRuclWPgGeTQbi8_7U-1nym5Lrz86NSgWMrt5UXYvR7-SEHEwHA2McIMP_Of3_DPS9lFuCaS2rBh8A4659KZA1p=s1360-w1360-h1020-rw';
                 }}

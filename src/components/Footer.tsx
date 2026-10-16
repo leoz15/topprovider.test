@@ -77,9 +77,9 @@ export const Footer: React.FC = () => {
           {/* Brand Column with Official Logo */}
           <div className="col-span-2 lg:col-span-4 space-y-4">
             <img
-              src="/assets/top-logo.png"
+              src={`${import.meta.env.BASE_URL}assets/top-logo.png`}
               alt="TOP PROVIDER SYSTEM GROUP CO., LTD."
-              className="h-10 w-auto object-contain"
+              className="h-10 sm:h-12 w-auto max-w-[240px] object-contain"
             />
             <p className="text-xs text-slate-600 font-medium">
               บริษัท ท็อป โปรไวเดอร์ ซิสเท็ม กรุ๊ป จำกัด <br />
