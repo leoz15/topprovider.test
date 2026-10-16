@@ -13,6 +13,7 @@ export interface Project {
   metrics: { label: string; value: string }[];
   technologies: string[];
   coverImage: string;
+  videoUrl?: string;
   galleryImages: string[];
   testimonial?: {
     quote: string;

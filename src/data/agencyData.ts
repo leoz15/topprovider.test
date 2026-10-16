@@ -25,6 +25,7 @@ export const PROJECTS: Project[] = [
     ],
     technologies: ['React', 'TypeScript', 'Tailwind CSS', 'PostgreSQL', 'HL7/FHIR'],
     coverImage: `${import.meta.env.BASE_URL}assets/vitanix-claim.png`,
+    videoUrl: `${import.meta.env.BASE_URL}assets/vitanix-demo.mp4`,
     galleryImages: [
       `${import.meta.env.BASE_URL}assets/vitanix-claim.png`,
     ],

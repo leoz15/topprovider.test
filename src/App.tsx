@@ -2,9 +2,10 @@ import { useState } from 'react';
 import { Navbar } from './components/Navbar';
 import { HeroSection } from './components/HeroSection';
 import { StickyProjectSection } from './components/StickyProjectSection';
+import { TeamSection } from './components/TeamSection';
 import { TrustIndicators } from './components/TrustIndicators';
+import { StatsSection } from './components/StatsSection';
 import { AboutSection } from './components/AboutSection';
-import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { ProjectModal } from './components/ProjectModal';
 import { useLenis } from './hooks/useLenis';
@@ -16,7 +17,7 @@ export function App() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   const handleOpenContactModal = () => {
-    document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
+    document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
@@ -24,25 +25,28 @@ export function App() {
       {/* Main Navigation Header */}
       <Navbar onOpenContactModal={handleOpenContactModal} />
 
-      {/* Main Content Sections */}
+      {/* Main Content Sections Structured Strictly Following Reference */}
       <main>
-        {/* 1. Framed Architectural Motion Hero (Pure Image, No text) */}
+        {/* 1. Hero Section (Strictly Untouched) */}
         <HeroSection />
 
-        {/* 2. Flagship Product Showcase (Laptop & Device Mockups) */}
+        {/* 2. Project Showcase / Product Section (Strictly Untouched) */}
         <StickyProjectSection onSelectProject={(p) => setSelectedProject(p)} />
 
-        {/* 3. Selected Clients & Key Verified Metrics */}
+        {/* 3. Leadership & Architecture Team */}
+        <TeamSection />
+
+        {/* 4. Trusted by Industry Leaders & Institutions Marquee */}
         <TrustIndicators />
 
-        {/* 4. About TOP Provider System Group & Leadership */}
-        <AboutSection />
+        {/* 5. Key Achievements / Statistics */}
+        <StatsSection />
 
-        {/* 5. Contact CTA & Interactive Form */}
-        <ContactSection />
+        {/* 6. About Us / Company Introduction */}
+        <AboutSection />
       </main>
 
-      {/* Footer */}
+      {/* 7. Minimal 4-Column Footer with Watermark */}
       <Footer />
 
       {/* Project Case Study Modal */}

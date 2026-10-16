@@ -69,11 +69,23 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose, on
         <div className="overflow-y-auto p-6 sm:p-10 space-y-8 bg-slate-50">
           {/* Hero Image Showcase */}
           <div className="relative rounded-2xl overflow-hidden aspect-[16/9] sm:aspect-[21/10] bg-white border border-slate-200 shadow-sm">
-            <img
-              src={project.coverImage}
-              alt={project.name}
-              className="w-full h-full object-cover"
-            />
+            {project.videoUrl ? (
+              <video
+                src={project.videoUrl}
+                poster={project.coverImage}
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full h-full object-contain bg-[#0F172A]"
+              />
+            ) : (
+              <img
+                src={project.coverImage}
+                alt={project.name}
+                className="w-full h-full object-cover"
+              />
+            )}
             <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-[#0066FF] text-white text-xs font-mono shadow-sm">
               {project.category}
             </div>
