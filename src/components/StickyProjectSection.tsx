@@ -14,7 +14,8 @@ export const StickyProjectSection: React.FC<StickyProjectSectionProps> = ({ onSe
 
   return (
     <section id="showcase" className="py-16 sm:py-24 lg:py-28 bg-[#F8FAFC] text-slate-900 relative z-20 border-b border-slate-200/80">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* 90-92% Viewport Width Container with Max 1500px */}
+      <div className="w-[92%] max-w-[1500px] mx-auto px-2 sm:px-4 lg:px-6">
         {/* Section Header with Scroll Motion */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16">
           <div>
@@ -100,9 +101,10 @@ export const StickyProjectSection: React.FC<StickyProjectSectionProps> = ({ onSe
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[500px]">
-                  {/* Left Column: Product Information */}
-                  <div className="lg:col-span-5 p-6 sm:p-9 lg:p-11 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-slate-100 bg-[#FFFFFF]">
+                {/* 38 : 62 Layout Proportion */}
+                <div className="flex flex-col lg:flex-row min-h-[520px] lg:min-h-[560px]">
+                  {/* Left Column (38%): Product Information */}
+                  <div className="w-full lg:w-[38%] p-6 sm:p-8 lg:p-9 xl:p-10 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-slate-100 bg-[#FFFFFF] shrink-0">
                     <div>
                       {/* Counter & Year / Client */}
                       <div className="flex items-center justify-between gap-4 mb-4">
@@ -115,7 +117,7 @@ export const StickyProjectSection: React.FC<StickyProjectSectionProps> = ({ onSe
                       </div>
 
                       {/* Product Title */}
-                      <h3 className="text-3xl sm:text-4xl lg:text-[42px] font-bold tracking-tight text-[#0F172A] mb-3 leading-tight">
+                      <h3 className="text-3xl sm:text-4xl lg:text-[40px] font-bold tracking-tight text-[#0F172A] mb-3 leading-tight">
                         {project.name}
                       </h3>
 
@@ -179,26 +181,26 @@ export const StickyProjectSection: React.FC<StickyProjectSectionProps> = ({ onSe
                     </div>
                   </div>
 
-                  {/* Right Column: Device Screen Mockup Frame */}
+                  {/* Right Column (62%): Expanded Device Screen Mockup Frame */}
                   <div
                     onClick={() => onSelectProject(project)}
-                    className="lg:col-span-7 relative bg-gradient-to-br from-slate-50/80 to-blue-50/20 overflow-hidden group cursor-pointer flex items-center justify-center p-6 sm:p-8 lg:p-10 min-h-[340px] lg:min-h-full"
+                    className="w-full lg:w-[62%] relative bg-gradient-to-br from-slate-50/80 to-blue-50/20 overflow-hidden group cursor-pointer flex items-center justify-center p-3 sm:p-5 lg:p-6 xl:p-8 min-h-[380px] sm:min-h-[440px] lg:min-h-full"
                   >
-                    {/* Device Mockup Shell */}
-                    <div className="relative w-full max-w-2xl transition-transform duration-500 ease-out group-hover:scale-[1.015]">
+                    {/* Expanded Device Mockup Shell (~15-20% larger, max-w-[840px]) */}
+                    <div className="relative w-full max-w-[840px] transition-transform duration-500 ease-out group-hover:scale-[1.015] flex flex-col items-center justify-center">
                       {/* Laptop Screen Bezel */}
-                      <div className="relative rounded-t-xl bg-[#0F172A] border-[6px] sm:border-[8px] border-slate-900 shadow-[0_20px_50px_rgba(0,102,255,0.14)] overflow-hidden aspect-[16/10]">
+                      <div className="relative w-full rounded-t-xl bg-[#0F172A] border-[5px] sm:border-[7px] border-slate-900 shadow-[0_22px_60px_rgba(0,102,255,0.15)] overflow-hidden aspect-[16/10] flex items-center justify-center">
                         <img
                           src={project.coverImage}
                           alt={project.name}
-                          className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                          className="w-full h-full object-contain transition-transform duration-700 ease-out group-hover:scale-[1.02]"
                           loading="lazy"
                         />
                       </div>
 
                       {/* Laptop Bottom Base */}
-                      <div className="relative h-2.5 sm:h-3 bg-slate-300 rounded-b-xl border-t border-slate-400 shadow-sm flex justify-center items-start">
-                        <div className="w-16 h-1 rounded-b bg-slate-400" />
+                      <div className="relative w-full h-2.5 sm:h-3 bg-slate-300 rounded-b-xl border-t border-slate-400 shadow-sm flex justify-center items-start">
+                        <div className="w-20 h-1 rounded-b bg-slate-400" />
                       </div>
                     </div>
                   </div>

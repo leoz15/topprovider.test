@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Menu, X, ArrowUpRight, Phone, Calendar } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -10,6 +10,45 @@ interface NavbarProps {
 
 export const Navbar: React.FC<NavbarProps> = ({ onOpenContactModal }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const lastScrollY = useRef(0);
+
+  useEffect(() => {
+    const threshold = 10; // Scroll threshold to avoid flickering from tiny scroll movements
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      // Always show header when at or near top of the page
+      if (currentScrollY <= 50) {
+        setIsVisible(true);
+        lastScrollY.current = currentScrollY;
+        return;
+      }
+
+      const diff = currentScrollY - lastScrollY.current;
+
+      // Ignore scroll delta smaller than threshold
+      if (Math.abs(diff) < threshold) {
+        return;
+      }
+
+      if (diff > 0) {
+        // Scrolling Down -> Hide Header
+        setIsVisible(false);
+      } else {
+        // Scrolling Up -> Show Header
+        setIsVisible(true);
+      }
+
+      lastScrollY.current = currentScrollY;
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const showHeader = isVisible || mobileMenuOpen;
 
   const navLinks = [
     { label: 'Home', href: '#hero' },
@@ -46,11 +85,14 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContactModal }) => {
 
   return (
     <>
-      {/* Floating Pill Header with Blue Tech Branding */}
+      {/* Floating Pill Header with Blue Tech Branding - Smart Sticky Header */}
       <motion.header
         initial={{ y: -40, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+        animate={{
+          y: showHeader ? 0 : -100,
+          opacity: showHeader ? 1 : 0,
+        }}
+        transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
         className="fixed top-4 sm:top-5 left-0 right-0 z-50 flex justify-center px-3 sm:px-6 pointer-events-none"
       >
         <div className="w-full max-w-6xl flex items-center justify-between py-2 sm:py-2.5 px-4 sm:px-6 rounded-full bg-white/95 backdrop-blur-md border border-slate-200/80 shadow-[0_8px_30px_rgba(0,102,255,0.08)] pointer-events-auto transition-all duration-300 hover:shadow-[0_12px_40px_rgba(0,102,255,0.12)]">
