@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Menu, X, ArrowUpRight, Phone, Calendar } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const LOGO_SRC = `${import.meta.env.BASE_URL}assets/top-logo.png`;
 
@@ -46,7 +47,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContactModal }) => {
   return (
     <>
       {/* Floating Pill Header with Blue Tech Branding */}
-      <header className="fixed top-4 sm:top-5 left-0 right-0 z-50 flex justify-center px-3 sm:px-6 pointer-events-none">
+      <motion.header
+        initial={{ y: -40, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+        className="fixed top-4 sm:top-5 left-0 right-0 z-50 flex justify-center px-3 sm:px-6 pointer-events-none"
+      >
         <div className="w-full max-w-6xl flex items-center justify-between py-2 sm:py-2.5 px-4 sm:px-6 rounded-full bg-white/95 backdrop-blur-md border border-slate-200/80 shadow-[0_8px_30px_rgba(0,102,255,0.08)] pointer-events-auto transition-all duration-300 hover:shadow-[0_12px_40px_rgba(0,102,255,0.12)]">
           {/* Official Company Logo */}
           <a
@@ -82,7 +88,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContactModal }) => {
               className="inline-flex items-center gap-2 px-4 sm:px-5 py-2 rounded-full bg-[#0066FF] text-white text-xs sm:text-sm font-medium tracking-tight transition-all duration-200 hover:bg-[#0052CC] hover:shadow-[0_6px_20px_rgba(0,102,255,0.35)] hover:scale-[1.02] active:scale-[0.98] shadow-sm group"
             >
               <Calendar className="w-3.5 h-3.5 fill-white/20 transition-transform group-hover:scale-110" />
-              <span>Book a Call</span>
+              <span>contact</span>
             </button>
 
             {/* Mobile Hamburger Button */}
@@ -95,7 +101,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContactModal }) => {
             </button>
           </div>
         </div>
-      </header>
+      </motion.header>
 
       {/* Mobile Menu Drawer */}
       {mobileMenuOpen && (

@@ -2,6 +2,41 @@ import type { Project, ServiceItem, TestimonialItem, TeamMember } from '../types
 
 export const PROJECTS: Project[] = [
   {
+    id: 'vitanix-claim',
+    name: 'Vitanix Claim',
+    client: 'Healthcare Management',
+    year: '2026',
+    category: 'Hospital Claim',
+    subCategory: 'Healthcare Solution',
+    shortDescription: 'ระบบบริหารจัดการและเบิกจ่ายค่ารักษาพยาบาลอัตโนมัติ เชื่อมต่อข้อมูลสิทธิการรักษาและประกันภัยแบบครบวงจร ช่วยลดขั้นตอนการตรวจสอบเอกสารและเพิ่มความแม่นยำในการเคลม',
+    fullDescription: 'Vitanix Claim ระบบบริหารจัดการและเบิกจ่ายค่ารักษาพยาบาลอัจฉริยะสำหรับโรงพยาบาลและสถานพยาบาลระดับองค์กร ช่วยให้การเคลมสิทธิการรักษาพยาบาล (e-Claim, ประกันสุขภาพ, สิทธิราชการ) เป็นไปอย่างถูกต้อง แม่นยำ และรวดเร็ว พร้อมระบบ Pre-audit ตรวจสอบความถูกต้องของเวชระเบียนและเอกสารก่อนส่งเคลม ลดอัตราการถูกปฏิเสธเคลมได้อย่างมีนัยสำคัญ',
+    challenge: 'การเบิกจ่ายค่ารักษาพยาบาลมีความซับซ้อนในเรื่องสิทธิ เงื่อนไขกองทุน และรหัสโรค-หัตถการ ซึ่งหากส่งข้อมูลผิดพลาดจะทำให้การเบิกจ่ายล่าช้าหรือถูกตัดสิทธิ์',
+    solution: 'พัฒนาระบบตรวจสอบความถูกต้องล่วงหน้า (Pre-audit), ติดตามสถานะเคลมแบบ Real-time, และเชื่อมต่อระบบ e-Claim กองทุนสุขภาพภาครัฐและเอกชนแบบครบวงจร',
+    deliverables: [
+      'Real-time Claim Tracking',
+      'Pre-audit & Error Detection',
+      'Automated e-Claim Processing',
+      'Business Intelligence Dashboard',
+      'Fund & Rule Validation Engine',
+    ],
+    metrics: [
+      { label: 'ความแม่นยำในการส่งข้อมูลเคลม', value: '99.8%' },
+      { label: 'เจ้าหน้าที่จัดการงานเคลมได้เร็วขึ้น', value: '2.4x' },
+    ],
+    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'PostgreSQL', 'HL7/FHIR'],
+    coverImage: `${import.meta.env.BASE_URL}assets/vitanix-claim.png`,
+    galleryImages: [
+      `${import.meta.env.BASE_URL}assets/vitanix-claim.png`,
+    ],
+    testimonial: {
+      quote: 'ระบบ Vitanix Claim ช่วยให้งานเบิกจ่ายของโรงพยาบาลรวดเร็วขึ้นกว่าเดิมอย่างมาก ตรวจจับข้อผิดพลาดก่อนส่งเบิกได้แบบเรียลไทม์',
+      author: 'โรงพยาบาลพันธมิตร',
+      role: 'ผู้อำนวยการฝ่ายการเงินและบริหารเวชระเบียน',
+    },
+    featured: true,
+    accentColor: '#0066FF',
+  },
+  {
     id: 'teamleap',
     name: 'Teamleap',
     client: 'Teamleap Technologies',

@@ -30,9 +30,11 @@ export default {
         }
       },
       fontFamily: {
-        sans: ['Geist', 'Plus Jakarta Sans', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
-        mono: ['Geist Mono', 'ui-monospace', 'monospace'],
-        editorial: ['Geist', 'Plus Jakarta Sans', 'sans-serif'],
+        sans: ['Roboto', 'Prompt', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
+        mono: ['ui-monospace', 'monospace'],
+        editorial: ['Roboto', 'Prompt', 'sans-serif'],
+        prompt: ['Prompt', 'sans-serif'],
+        roboto: ['Roboto', 'sans-serif'],
       },
       borderRadius: {
         '4xl': '2rem',

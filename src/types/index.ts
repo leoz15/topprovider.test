@@ -4,6 +4,7 @@ export interface Project {
   client: string;
   year: string;
   category: string;
+  subCategory?: string;
   shortDescription: string;
   fullDescription: string;
   challenge: string;

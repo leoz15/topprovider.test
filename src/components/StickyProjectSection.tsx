@@ -1,5 +1,6 @@
 import React from 'react';
-import { ArrowUpRight, Sparkles, CheckCircle, Eye } from 'lucide-react';
+import { ArrowUpRight, CheckCircle2 } from 'lucide-react';
+import { motion } from 'framer-motion';
 import type { Project } from '../types';
 import { PROJECTS } from '../data/agencyData';
 
@@ -8,107 +9,134 @@ interface StickyProjectSectionProps {
 }
 
 export const StickyProjectSection: React.FC<StickyProjectSectionProps> = ({ onSelectProject }) => {
-  // Select top 3 flagship projects for the showcase
+  // Select top flagship projects for showcase
   const stickyProjects = PROJECTS.slice(0, 3);
 
   return (
-    <section id="showcase" className="py-20 lg:py-28 bg-[#F8FAFC] text-slate-900 relative z-20 border-b border-slate-200/80">
-      <div className="max-w-7xl mx-auto px-5 sm:px-8">
-        {/* Section Header with Blue Accent */}
+    <section id="showcase" className="py-16 sm:py-24 lg:py-28 bg-[#F8FAFC] text-slate-900 relative z-20 border-b border-slate-200/80">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header with Scroll Motion */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16">
           <div>
-            <div className="flex items-center gap-3 mb-3">
-              <span className="text-xs font-mono font-medium uppercase tracking-widest text-[#0066FF]">
-                Enterprise Portfolio
+            {/* Category Tags */}
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.5, ease: 'easeOut' }}
+              className="flex items-center gap-3 mb-3 sm:mb-3.5"
+            >
+              <span className="text-[11px] sm:text-xs font-mono font-semibold tracking-widest text-[#0066FF] uppercase">
+                SOFTWARE PRODUCT
               </span>
-              <div className="h-px w-8 bg-blue-300" />
-              <span className="text-xs font-medium text-[#0066FF] bg-blue-50 px-2.5 py-0.5 rounded-full border border-blue-200 shadow-xs">
-                Featured Case Studies
+              <div className="h-px w-6 sm:w-8 bg-blue-300" />
+              <span className="text-[11px] sm:text-xs font-medium text-[#0066FF] bg-blue-50/70 px-3 py-0.5 rounded-full border border-blue-200">
+                IT Solution & Product
               </span>
-            </div>
-            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-medium tracking-tight text-slate-900 font-editorial">
-              Software engineered for <br />
-              <span className="text-[#0066FF]">speed and scale.</span>
-            </h2>
+            </motion.div>
+
+            {/* Main Section Heading */}
+            <motion.h2
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.65, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+              className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#0F172A] leading-[1.2]"
+            >
+              ผลิตภัณฑ์และโซลูชัน <br />
+              <span className="text-[#0066FF]">ทั้งหมดของเรา</span>
+            </motion.h2>
           </div>
 
-          <p className="text-sm sm:text-base text-slate-600 max-w-md font-normal leading-relaxed">
-            Enterprise-grade digital systems and web applications designed to solve mission-critical challenges and drive business acceleration.
-          </p>
+          {/* Right Thai Description */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.65, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
+            className="text-sm sm:text-base text-slate-500 font-normal leading-relaxed max-w-sm md:text-right"
+          >
+            ระบบดิจิทัลและซอฟต์แวร์ระดับองค์กรทั้ง 12 ระบบ <br className="hidden sm:inline" />
+            ที่ออกแบบมาเพื่อแก้ไขปัญหาสำคัญของธุรกิจ <br className="hidden sm:inline" />
+            และขับเคลื่อนการทำงานให้เติบโตอย่างก้าวกระโดด
+          </motion.p>
         </div>
 
-        {/* Sticky Stacked Product Cards Stage (Blue CI Tone) */}
-        <div className="relative space-y-12 lg:space-y-20">
+        {/* Sticky Stacked Product Cards Stage */}
+        <div className="relative space-y-12 lg:space-y-16">
           {stickyProjects.map((project, index) => {
             const topOffset = 88 + index * 16;
+            const categoryBadge = project.category || 'Hospital Claim';
+            const subCategoryBadge = project.subCategory || 'Healthcare Solution';
 
             return (
-              <div
+              <motion.div
                 key={project.id}
+                initial={{ opacity: 0, y: 35 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.15 }}
+                transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
                 style={{ top: `${topOffset}px` }}
-                className="sticky rounded-[28px] sm:rounded-[36px] bg-[#FFFFFF] border border-slate-200 shadow-[0_20px_50px_rgba(0,102,255,0.06)] overflow-hidden transition-all duration-300"
+                className="sticky rounded-[24px] sm:rounded-[32px] lg:rounded-[36px] bg-[#FFFFFF] border border-blue-100/80 shadow-[0_20px_50px_rgba(0,102,255,0.06)] overflow-hidden transition-all duration-300"
               >
                 {/* Top Window Bar */}
-                <div className="px-6 py-3.5 bg-slate-50 border-b border-slate-200/80 flex items-center justify-between">
+                <div className="px-5 sm:px-7 py-3.5 bg-slate-50/70 border-b border-slate-100 flex items-center justify-between flex-wrap gap-2">
                   <div className="flex items-center gap-2">
-                    <span className="w-2.5 h-2.5 rounded-full bg-red-400 inline-block" />
-                    <span className="w-2.5 h-2.5 rounded-full bg-amber-400 inline-block" />
-                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 inline-block" />
-                    <span className="text-xs font-medium text-slate-500 ml-3">
-                      topprovider.platform / {project.name.toLowerCase()}
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F56] inline-block" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E] inline-block" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#27C93F] inline-block" />
+                    <span className="text-xs font-medium text-slate-600 ml-3">
+                      Topprovider.co.th / {project.name}
                     </span>
                   </div>
 
-                  <div className="flex items-center gap-3">
-                    <span className="hidden sm:inline-block text-[11px] font-mono text-[#0066FF] bg-blue-50 px-3 py-1 rounded-full border border-blue-200 shadow-xs">
-                      {project.category}
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs font-medium text-[#0066FF] bg-white px-3.5 py-1 rounded-full border border-blue-200/90 shadow-2xs">
+                      {categoryBadge}
                     </span>
-                    <button
-                      onClick={() => onSelectProject(project)}
-                      className="px-3.5 py-1 rounded-full bg-white hover:bg-blue-50 text-[#0066FF] text-xs font-medium flex items-center gap-1.5 transition-colors border border-blue-200 shadow-xs"
-                    >
-                      <Eye className="w-3.5 h-3.5" />
-                      <span>Case Details</span>
-                    </button>
+                    <span className="text-xs font-medium text-[#0066FF] bg-white px-3.5 py-1 rounded-full border border-blue-200/90 shadow-2xs">
+                      {subCategoryBadge}
+                    </span>
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[540px] lg:min-h-[580px]">
-                  {/* Left Column: Editorial Information */}
-                  <div className="lg:col-span-5 p-7 sm:p-10 lg:p-12 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-slate-200/80 bg-[#FFFFFF]">
+                <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[500px]">
+                  {/* Left Column: Product Information */}
+                  <div className="lg:col-span-5 p-6 sm:p-9 lg:p-11 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-slate-100 bg-[#FFFFFF]">
                     <div>
-                      {/* Top Counter & Year */}
+                      {/* Counter & Year / Client */}
                       <div className="flex items-center justify-between gap-4 mb-4">
-                        <span className="text-xs font-mono font-medium text-[#0066FF] bg-blue-50 px-2.5 py-1 rounded-full border border-blue-100">
-                          0{index + 1} / 0{stickyProjects.length}
+                        <span className="text-xs font-mono font-semibold text-[#0066FF] bg-blue-50/80 px-2.5 py-0.5 rounded-full border border-blue-100">
+                          0{index + 1} / 12
                         </span>
-                        <span className="text-xs text-slate-500">
+                        <span className="text-xs text-slate-400 font-medium">
                           {project.year} • {project.client}
                         </span>
                       </div>
 
-                      {/* Project Title */}
-                      <h3 className="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight text-slate-900 font-editorial mb-3">
+                      {/* Product Title */}
+                      <h3 className="text-3xl sm:text-4xl lg:text-[42px] font-bold tracking-tight text-[#0F172A] mb-3 leading-tight">
                         {project.name}
                       </h3>
 
-                      <p className="text-sm sm:text-base text-slate-600 leading-relaxed mb-6 font-normal">
+                      {/* Description */}
+                      <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-6 font-normal">
                         {project.shortDescription}
                       </p>
 
-                      {/* Scope Delivered */}
-                      <div className="space-y-2 mb-6">
-                        <p className="text-xs font-mono uppercase tracking-wider text-slate-500 font-medium">
-                          Scope Delivered:
+                      {/* Key Features */}
+                      <div className="space-y-2.5 mb-6">
+                        <p className="text-[11px] font-mono uppercase tracking-wider text-slate-400 font-bold">
+                          KEY FEATURES :
                         </p>
-                        <div className="flex flex-wrap gap-1.5">
+                        <div className="flex flex-wrap gap-2">
                           {project.deliverables.slice(0, 3).map((item, i) => (
                             <span
                               key={i}
-                              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-50 text-xs text-slate-700 border border-slate-200 font-medium"
+                              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-50/80 text-xs text-slate-700 border border-slate-200/80 font-medium"
                             >
-                              <CheckCircle className="w-3.5 h-3.5 text-[#0066FF]" />
-                              {item}
+                              <CheckCircle2 className="w-3.5 h-3.5 text-[#0066FF] shrink-0" />
+                              <span>{item}</span>
                             </span>
                           ))}
                         </div>
@@ -120,17 +148,21 @@ export const StickyProjectSection: React.FC<StickyProjectSectionProps> = ({ onSe
                       {project.metrics && project.metrics.length > 0 && (
                         <div className="grid grid-cols-2 gap-4 pt-4 border-t border-slate-100 mb-6">
                           <div>
-                            <p className="text-2xl sm:text-3xl font-semibold font-editorial text-[#0066FF]">
+                            <p className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#0066FF] tracking-tight">
                               {project.metrics[0].value}
                             </p>
-                            <p className="text-xs text-slate-500">{project.metrics[0].label}</p>
+                            <p className="text-xs text-slate-500 mt-1 font-normal leading-snug">
+                              {project.metrics[0].label}
+                            </p>
                           </div>
                           {project.metrics[1] && (
                             <div>
-                              <p className="text-2xl sm:text-3xl font-semibold font-editorial text-slate-900">
+                              <p className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#0F172A] tracking-tight">
                                 {project.metrics[1].value}
                               </p>
-                              <p className="text-xs text-slate-500">{project.metrics[1].label}</p>
+                              <p className="text-xs text-slate-500 mt-1 font-normal leading-snug">
+                                {project.metrics[1].label}
+                              </p>
                             </div>
                           )}
                         </div>
@@ -139,10 +171,10 @@ export const StickyProjectSection: React.FC<StickyProjectSectionProps> = ({ onSe
                       {/* Primary CTA in Electric Blue */}
                       <button
                         onClick={() => onSelectProject(project)}
-                        className="group w-full py-3.5 px-6 rounded-full bg-[#0066FF] text-white font-medium text-sm flex items-center justify-center gap-2 hover:bg-[#0052CC] transition-all duration-200 shadow-md shadow-blue-500/25"
+                        className="w-full py-3 sm:py-3.5 px-6 rounded-full bg-[#0066FF] hover:bg-[#0052CC] text-white font-medium text-xs sm:text-sm flex items-center justify-center gap-2 shadow-[0_8px_20px_rgba(0,102,255,0.35)] hover:shadow-[0_12px_28px_rgba(0,102,255,0.45)] transition-all duration-300 hover:scale-[1.01] active:scale-[0.99] cursor-pointer group"
                       >
-                        <span>Examine Full Case Study</span>
-                        <ArrowUpRight className="w-4 h-4 stroke-[2] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                        <span>ดูรายละเอียด</span>
+                        <ArrowUpRight className="w-4 h-4 stroke-[2.5] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                       </button>
                     </div>
                   </div>
@@ -150,48 +182,28 @@ export const StickyProjectSection: React.FC<StickyProjectSectionProps> = ({ onSe
                   {/* Right Column: Device Screen Mockup Frame */}
                   <div
                     onClick={() => onSelectProject(project)}
-                    className="lg:col-span-7 relative bg-gradient-to-br from-slate-50 to-blue-50/40 overflow-hidden group cursor-pointer flex items-center justify-center p-6 sm:p-10 min-h-[360px] lg:min-h-full"
+                    className="lg:col-span-7 relative bg-gradient-to-br from-slate-50/80 to-blue-50/20 overflow-hidden group cursor-pointer flex items-center justify-center p-6 sm:p-8 lg:p-10 min-h-[340px] lg:min-h-full"
                   >
                     {/* Device Mockup Shell */}
                     <div className="relative w-full max-w-2xl transition-transform duration-500 ease-out group-hover:scale-[1.015]">
                       {/* Laptop Screen Bezel */}
-                      <div className="relative rounded-t-2xl bg-[#0F172A] border-[7px] sm:border-[8px] border-slate-900 shadow-[0_25px_60px_rgba(0,102,255,0.18)] overflow-hidden aspect-[16/10]">
-                        <div className="absolute top-1.5 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-slate-800 border border-white/20 z-20" />
-
+                      <div className="relative rounded-t-xl bg-[#0F172A] border-[6px] sm:border-[8px] border-slate-900 shadow-[0_20px_50px_rgba(0,102,255,0.14)] overflow-hidden aspect-[16/10]">
                         <img
                           src={project.coverImage}
                           alt={project.name}
-                          className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                          className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                           loading="lazy"
                         />
-
-                        {/* Interactive Beacon / Center Pulse in Royal Blue */}
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none">
-                          <span className="relative flex h-8 w-8">
-                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#0066FF] opacity-75"></span>
-                            <span className="relative inline-flex items-center justify-center rounded-full h-8 w-8 bg-slate-900/80 border border-blue-400/50 backdrop-blur-sm">
-                              <span className="w-2.5 h-2.5 rounded-full bg-[#0066FF]"></span>
-                            </span>
-                          </span>
-                        </div>
                       </div>
 
                       {/* Laptop Bottom Base */}
-                      <div className="relative h-3 bg-slate-300 rounded-b-xl border-t border-slate-400 shadow-sm flex justify-center items-start">
+                      <div className="relative h-2.5 sm:h-3 bg-slate-300 rounded-b-xl border-t border-slate-400 shadow-sm flex justify-center items-start">
                         <div className="w-16 h-1 rounded-b bg-slate-400" />
-                      </div>
-                    </div>
-
-                    {/* Interactive Preview Badge */}
-                    <div className="absolute top-6 right-6">
-                      <div className="px-3.5 py-1.5 rounded-full bg-white/95 backdrop-blur-md border border-blue-200 shadow-sm text-[#0066FF] text-xs font-medium flex items-center gap-1.5">
-                        <Sparkles className="w-3.5 h-3.5 text-[#0066FF]" />
-                        <span>Interactive Case</span>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>
