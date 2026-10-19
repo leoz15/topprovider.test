@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowUp, ArrowUpRight, Mail, Phone, MapPin } from 'lucide-react';
+import { ArrowUp, Mail, Phone, MapPin } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   const scrollToTop = () => {
@@ -18,13 +18,6 @@ export const Footer: React.FC = () => {
     { label: 'HL7 & FHIR Standards' },
     { label: 'Data Encryption AES-256' },
     { label: '24/7 Dedicated Support' },
-  ];
-
-  const resources = [
-    { label: 'Vitanix Claim Documentation' },
-    { label: 'Case Studies' },
-    { label: 'Security & Privacy Policy' },
-    { label: 'Terms of Service' },
   ];
 
   return (
