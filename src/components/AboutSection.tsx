@@ -16,11 +16,14 @@ export const AboutSection: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.5, ease: 'easeOut' }}
-              className="flex items-center gap-2.5 mb-3"
+              className="flex items-center gap-3 mb-3.5 sm:mb-4"
             >
-              <span className="w-2 h-2 rounded-full bg-[#0066FF]" />
-              <span className="text-[11px] sm:text-xs font-mono font-semibold tracking-widest text-[#0066FF] uppercase">
-                About Us • Bangkok, Thailand
+              <span className="text-xs sm:text-sm font-semibold tracking-[0.18em] text-[#0066FF] uppercase">
+                ABOUT US
+              </span>
+              <div className="h-px w-8 sm:w-10 bg-blue-300" />
+              <span className="text-xs sm:text-sm font-medium text-[#0066FF] bg-blue-50/80 px-3.5 py-0.5 sm:px-4 sm:py-1 rounded-full border border-blue-200">
+                Company
               </span>
             </motion.div>
 
@@ -32,8 +35,7 @@ export const AboutSection: React.FC = () => {
               className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] text-[#0F172A]"
             >
               <span className="text-[#0066FF]">TOP PROVIDER</span> <br />
-              <span className="text-[#F5A623]">SYSTEM GROUP</span>
-              <span className="text-[#0066FF]"> .</span>
+              <span className="text-[#F5A623]">SYSTEM GROUP .</span>
             </motion.h2>
           </div>
 
@@ -43,14 +45,12 @@ export const AboutSection: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.65, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="max-w-xl text-xs sm:text-sm md:text-[15px] text-slate-600 font-normal leading-relaxed space-y-3"
+            className="text-xs sm:text-sm md:text-[15px] lg:text-base text-slate-600 font-normal leading-relaxed lg:pb-1"
           >
-            <p>
-              บริษัท ท็อป โปรไวเดอร์ ซิสเท็ม กรุ๊ป จำกัด (Provider System Group Co., Ltd.) คือผู้นำด้านการพัฒนาเทคโนโลยี แพลตฟอร์มซอฟต์แวร์ และระบบบริหารจัดการทางการแพทย์ระดับองค์กร
-            </p>
-            <p className="text-slate-500 text-xs sm:text-sm">
-              เรามุ่งมั่นสร้างสรรค์นวัตกรรมดิจิทัลเพื่อช่วยยกระดับการทำงาน เพิ่มความแม่นยำในการประมวลผลข้อมูล และผลักดันองค์กรสู่ความสำเร็จอย่างยั่งยืน
-            </p>
+            <p className="font-medium text-slate-700">TOP PROVIDER SYSTEM GROUP CO., LTD.</p>
+            <p>(บริษัท ท็อป โปรไวเดอร์ ซิสเท็ม กรุ๊ป จำกัด)</p>
+            <p>ผู้นำด้านเทคโนโลยี โซลูชันระบบ และการพัฒนาซอฟต์แวร์ระดับองค์กร</p>
+            <p>เพื่อขับเคลื่อนประสิทธิภาพและความเติบโตอย่างยั่งยืน</p>
           </motion.div>
         </div>
 
