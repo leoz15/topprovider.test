@@ -12,33 +12,35 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContactModal }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const lastScrollY = useRef(0);
+  const accumulatedUpScroll = useRef(0);
 
   useEffect(() => {
-    const threshold = 10; // Scroll threshold to avoid flickering from tiny scroll movements
-
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
       // Always show header when at or near top of the page
-      if (currentScrollY <= 50) {
+      if (currentScrollY <= 80) {
         setIsVisible(true);
+        accumulatedUpScroll.current = 0;
         lastScrollY.current = currentScrollY;
         return;
       }
 
       const diff = currentScrollY - lastScrollY.current;
 
-      // Ignore scroll delta smaller than threshold
-      if (Math.abs(diff) < threshold) {
-        return;
-      }
-
-      if (diff > 0) {
-        // Scrolling Down -> Hide Header
+      if (diff > 5) {
+        // Scrolling Down -> Hide Header immediately and reset upward scroll counter
         setIsVisible(false);
-      } else {
-        // Scrolling Up -> Show Header
-        setIsVisible(true);
+        accumulatedUpScroll.current = 0;
+      } else if (diff < -5) {
+        // Scrolling Up -> Accumulate upward scroll distance
+        accumulatedUpScroll.current += Math.abs(diff);
+
+        // Require ~180px accumulated upward scroll (~2 mouse wheel scrolls) before showing
+        // to prevent obstructing the locked tablist
+        if (accumulatedUpScroll.current >= 180) {
+          setIsVisible(true);
+        }
       }
 
       lastScrollY.current = currentScrollY;

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Navbar } from './components/Navbar';
 import { HeroSection } from './components/HeroSection';
+import { VideoSolutionsSection } from './components/VideoSolutionsSection';
 import { StickyProjectSection } from './components/StickyProjectSection';
 import { TeamSection } from './components/TeamSection';
 import { TrustIndicators } from './components/TrustIndicators';
@@ -30,7 +31,10 @@ export function App() {
         {/* 1. Hero Section (Strictly Untouched) */}
         <HeroSection />
 
-        {/* 2. Project Showcase / Product Section (Strictly Untouched) */}
+        {/* 2. Video Solution Showcase ("ถัดจาก banner ลงมา ทำเป็นวิดิโอ เหมือนดังภาพ") */}
+        <VideoSolutionsSection />
+
+        {/* 3. Project Showcase / Product Section (Strictly Untouched) */}
         <StickyProjectSection onSelectProject={(p) => setSelectedProject(p)} />
 
         {/* 3. Leadership & Architecture Team */}
